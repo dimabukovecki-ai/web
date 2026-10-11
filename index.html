@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101510">
+  <title>Chess Online — Грай із друзями</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">♞</span> CHESS<span class="brand-accent">ONLINE</span></a>
+    <span class="live"><i></i> ГЛОБАЛЬНИЙ СЕРВЕР</span>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <div class="eyebrow">♟ ГРАЙ З БУДЬ-КИМ, БУДЬ-ДЕ</div>
+      <h1>Твій наступний<br><span>шаховий матч.</span></h1>
+      <p class="subtext">Створи кімнату, надішли код другу й грайте онлайн у реальному часі.</p>
+      <div class="room-panel">
+        <button id="createBtn" class="primary-btn">＋ Створити кімнату</button>
+        <div class="join-row">
+          <input id="roomInput" maxlength="8" placeholder="КОД КІМНАТИ" autocomplete="off" aria-label="Код кімнати">
+          <button id="joinBtn" class="secondary-btn">Приєднатись</button>
+        </div>
+        <p id="notice" class="notice">Створи кімнату або введи код друга.</p>
+        <div id="roomInfo" class="room-info hidden">
+          <div><span class="muted">КОД КІМНАТИ</span><strong id="roomCode">-----</strong></div>
+          <button id="copyBtn" class="copy-btn">Копіювати код</button>
+        </div>
+      </div>
+      <div class="features">
+        <div><span>⚡</span><p><b>У реальному часі</b><small>Ходи одразу видно супернику</small></p></div>
+        <div><span>🌍</span><p><b>Грай на відстані</b><small>Достатньо поділитися кодом</small></p></div>
+      </div>
+    </section>
+
+    <section class="game-card">
+      <div class="game-heading">
+        <div><span class="muted">ПОТОЧНА ПАРТІЯ</span><h2>Шахова дошка</h2></div>
+        <span id="turnPill" class="turn-pill">Очікування</span>
+      </div>
+      <div class="player-line"><span class="avatar">♚</span><div><b>Чорні</b><small id="blackStatus">Очікують гравця</small></div><span class="player-dot" id="blackDot"></span></div>
+      <div class="board-wrap">
+        <div id="board" class="board" aria-label="Шахова дошка"></div>
+      </div>
+      <div class="player-line bottom-player"><span class="avatar white-avatar">♔</span><div><b>Білі</b><small id="whiteStatus">Очікують гравця</small></div><span class="player-dot" id="whiteDot"></span></div>
+      <div class="game-footer">
+        <p id="gameMessage">Створи кімнату, щоб почати гру.</p>
+        <button id="resetBtn" class="reset-btn">↻ Нова партія</button>
+      </div>
+    </section>
+  </main>
+  <footer>CHESS ONLINE <span>•</span> Зроблено для гри з друзями</footer>
+  <script src="/client.js"></script>
+</body>
+</html>
